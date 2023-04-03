@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HomePage</title>
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet"/>
+
+</head>
+<body class="bg_primary">
+<div class="container">
+<header class="flex space-between">
+    <h1 class="heading">App Store</h1>
+    <div>
+        {{ form_start(home_buttons_form) }}
+        {{ form_end(home_buttons_form,) }}
+    </div>
+</header>
+    <div class="box">
+        <table class="table">
+    <thead>
+    <tr class="flex">
+        <th class="title"><h2>App Logo</h2></th>
+        <th class="title"><h2>App Name</h2></th>
+        <th class="title"><h2>Description</h2></th>
+        <th class="title"><h2>Downloads </h2></th>
+        <th class="title"><h2>Developer</h2></th>
+        <th class="title"><h2>User Review</h2></th>
+        <th class="icon"><h2>Download </h2></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item  in app_list %}
+        <tr class="flex">
+            <td class="title"><img id="image" class="cover" src="http://localhost/uploads/image/{{ item.image }}" alt="Logo"></td>
+            <td class="title"> <h2>{{ item.appName }}</h2></td>
+            <td class="desc"><h2>{{ item.description }}</h2></td>
+            <td class="title"><h2>{{ item.downloadCount }}</h2></td>
+            <td  class="title"><h2>{{ item.developer}}</h2></td>
+            <td class="title" >
+                <a href="user_reviews{{ item.userReviewsId }}">User Reviews</a></td>
+            <td>
+                <a class="icon" href="http://localhost/uploads/apk/{{ item.apkFileLink }}"> <img id="download_icon" class="icon" src="http://localhost/uploads/icons/download_icon.png" alt="Download"></a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    </div>
+</div>
+</body>
+</html>
